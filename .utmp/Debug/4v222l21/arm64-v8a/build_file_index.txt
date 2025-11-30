@@ -1,0 +1,2 @@
+D:\Projects 21 to 30\Kill Switch - Deadly days\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Projects 21 to 30\Kill Switch - Deadly days\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

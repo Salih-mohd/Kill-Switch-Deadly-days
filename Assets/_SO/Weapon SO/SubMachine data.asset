@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47303a4349fa76145b3279c58144f572, type: 3}
+  m_Name: SubMachine data
+  m_EditorClassIdentifier: 
+  fireRate: 0.15
+  damage: 1
+  maxRange: 70
+  fireSound: {fileID: 8300000, guid: 3a75bed9a8d6a14449be5fa14cf9c8ed, type: 3}
+  reloadSound: {fileID: 8300000, guid: e839ff1f85b242f499afa08a23ad671b, type: 3}
+  maxAmmo: 30
+  reserveAmmo: 200
+  ammoName: smg
+  gunImg: {fileID: 1159695505846071479, guid: 4170cb341a2eda447aaeb2be620a0045, type: 3}
