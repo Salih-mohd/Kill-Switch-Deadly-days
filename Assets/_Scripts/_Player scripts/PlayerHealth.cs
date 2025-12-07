@@ -2,8 +2,12 @@ using System;
 using UnityEngine;
 using Photon.Pun;
 using Unity.VisualScripting;
+using TMPro;
 public class PlayerHealth : MonoBehaviourPun
 {
+
+
+   
 
     //public static PlayerHealth instance;
 
@@ -14,7 +18,7 @@ public class PlayerHealth : MonoBehaviourPun
 
     public GameObject playerUIPrefab;
 
-     
+
 
     private AnimationHandler animationHandler;
     private PlayerInputHandler inputHandler;
@@ -26,9 +30,9 @@ public class PlayerHealth : MonoBehaviourPun
     private bool isDead;
     private void Awake()
     {
-        animationHandler=GetComponent<AnimationHandler>();
-        inputHandler=GetComponent<PlayerInputHandler>();
-        attackHandler=GetComponent<GunAttackHandler>();
+        animationHandler = GetComponent<AnimationHandler>();
+        inputHandler = GetComponent<PlayerInputHandler>();
+        attackHandler = GetComponent<GunAttackHandler>();
         pickupHandler = GetComponent<GunPickupHandler>();
     }
 
@@ -44,18 +48,18 @@ public class PlayerHealth : MonoBehaviourPun
             {
                 var UIGO = Instantiate(playerUIPrefab);
                 playerUI = UIGO.GetComponent<LocalUIManager>();
-                playerUI.SetTarget(this,photonView,attackHandler,pickupHandler);
+                playerUI.SetTarget(this, photonView, attackHandler, pickupHandler);
 
             }
             else
             {
-                 
+
             }
 
-            gameManager=GameObject.FindAnyObjectByType(typeof(GameManager)).GetComponent<GameManager>();
+            gameManager = GameObject.FindAnyObjectByType(typeof(GameManager)).GetComponent<GameManager>();
         }
 
-        
+
     }
 
 
@@ -67,31 +71,73 @@ public class PlayerHealth : MonoBehaviourPun
 
 
     [PunRPC]
-    public void Damage(float damage,int attackerId)
+    public void Damage(float damage, int attackerId)
     {
-         
-    
-        if(photonView.IsMine)
+
+
+        if (photonView.IsMine)
         {
             OnHealthChange?.Invoke(damage);
-            health-=damage;
-            Debug.Log(health);
+            health -= damage;
+            //Debug.Log(health);
 
-            if (health <=0 && !isDead )
+
+
+            //hit marker update
+            // GlobalUIManager.instance.HitMarkUpdate(damage);
+
+            if (health <= 0 && !isDead)
             {
                 isDead = true;
                 //animationHandler.SetDieState();
                 photonView.RPC("Died", RpcTarget.All);
 
                 // awarding score
-                GlobalUIManager.instance.photonView.RPC("AddKill",RpcTarget.All,attackerId,photonView.Owner.ActorNumber);
+                GlobalUIManager.instance.photonView.RPC("AddKill", RpcTarget.All, attackerId, photonView.Owner.ActorNumber);
 
                 inputHandler.DisablingPlayerMap();
-                playerUI.ShowLocalDeathUI();
+                //playerUI.ShowLocalDeathUI();
                 gameManager.ReSpawn(this.gameObject);
             }
         }
-            
-            
+
+
+    }
+
+
+    // adding bot damage
+    [PunRPC]
+    public void Damagee(float damage,int botPVID)
+    {
+
+
+        if (photonView.IsMine)
+        {
+            OnHealthChange?.Invoke(damage);
+            health -= damage;
+            //Debug.Log(health);
+
+            if (health <= 0 && !isDead)
+            {
+                isDead = true;
+                //animationHandler.SetDieState();
+                photonView.RPC("Died", RpcTarget.All);
+
+                PhotonView botPV = PhotonView.Find(botPVID);
+
+                if(botPV != null)
+                    botPV.RPC("ChangeToIdle", RpcTarget.All);
+
+
+                // awarding score
+                //GlobalUIManager.instance.photonView.RPC("AddKill", RpcTarget.All, attackerId, photonView.Owner.ActorNumber);
+
+                inputHandler.DisablingPlayerMap();
+                //playerUI.ShowLocalDeathUI();
+                gameManager.ReSpawn(this.gameObject);
+            }
+        }
+
+
     }
 }

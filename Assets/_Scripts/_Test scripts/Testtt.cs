@@ -18,8 +18,9 @@ public class Testtt : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.forward, Color.green);
 
                
-                var playerHealth=hit.collider.GetComponent<IDamage>();
+                var botHealth=hit.collider.GetComponent<BotHealth>();
                 //Debug.Log("hitted collider is "+hit.collider.name);
+                botHealth.DecreaseHealth(5);
 
 
                 //playerHealth.Damage(10);

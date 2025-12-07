@@ -439,6 +439,7 @@ MonoBehaviour:
   equipSocketName: subM_Pos
   gunData: {fileID: 11400000, guid: 692705b4aea287043ae03382ff3c8910, type: 2}
   muzzleFlash: {fileID: 8263871019376812506}
+  flashFX: {fileID: 0}
   reserveAmmo: 60
   movementSpeedModifier: 5
   leftIdleW: 0.2

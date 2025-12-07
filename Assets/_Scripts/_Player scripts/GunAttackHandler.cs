@@ -43,6 +43,7 @@ public class GunAttackHandler : MonoBehaviourPun
 
     private IGun gun;
     private GunData gunData;
+    private PhotonView gunPV;
 
 
     private float lastFireTime = 0;
@@ -95,6 +96,7 @@ public class GunAttackHandler : MonoBehaviourPun
         {
             gun = gunPickupHandler.currentGun;
             gunData = gun.GunData;
+            gunPV=gunPickupHandler.gunPV;
             
 
             // audio playing.
@@ -113,10 +115,6 @@ public class GunAttackHandler : MonoBehaviourPun
 
             if (inputHandler.isAttacking && !isReloading)
             {
-
-
-
-
                 // Local call
                 AttackEventHandler();
                 gunRigController.UpdateLeftHandAim(true);
@@ -209,6 +207,9 @@ public class GunAttackHandler : MonoBehaviourPun
 
         if (gun.CurrentAmmo > 0)
         {
+            if(gunPV!=null)
+                gunPV.RPC("RPC_MuzzleFX", RpcTarget.All);
+
             gun.CurrentAmmo--;
             //Debug.Log(gun.CurrentAmmo);
             OnAmmoChanged?.Invoke(gun.CurrentAmmo, gun.RecerveAmmo);
@@ -246,6 +247,12 @@ public class GunAttackHandler : MonoBehaviourPun
 
 
 
+
+            //handling bots
+
+            var botHealth = hit.collider.transform.parent.GetComponent<BotHealth>();
+            if(botHealth != null) 
+                botHealth.DecreaseHealth(5);
 
 
 

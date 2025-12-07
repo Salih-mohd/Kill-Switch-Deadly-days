@@ -405,6 +405,7 @@ MonoBehaviour:
   equipSocketName: AKM_Pos
   gunData: {fileID: 11400000, guid: 8fee03183872dc54092d1cf2896ffcb4, type: 2}
   muzzleFlash: {fileID: 5241812173112169417}
+  flashFX: {fileID: 0}
   reserveAmmo: 60
   movementSpeedModifier: 4.7
   leftIdleW: 0.2

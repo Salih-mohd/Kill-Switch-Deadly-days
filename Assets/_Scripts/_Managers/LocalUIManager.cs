@@ -1,17 +1,21 @@
 using System;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LocalUIManager : MonoBehaviour
+public class LocalUIManager : MonoBehaviourPunCallbacks
 {
     public Slider healthBar;
     public Image LocalScoreImage;
     public GlobalUIManager globalUI;
     public TMP_Text ammo;
     public Image gunImg;
-   
+     
+
+    
 
     private PlayerHealth playerHealth;
 
@@ -23,8 +27,9 @@ public class LocalUIManager : MonoBehaviour
 
     private GunAttackHandler attackHandler;
     private GunPickupHandler pickupHandler;
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         //playerHealth.OnHealthChange -= ChangeHealth;
         //PlayerDamage.instance.OnHealthChange -= ChangeHealth;
 
@@ -45,6 +50,11 @@ public class LocalUIManager : MonoBehaviour
         }
 
 
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
     }
 
     private void Awake()
@@ -104,4 +114,9 @@ public class LocalUIManager : MonoBehaviour
     {
         gunImg.sprite = null;
     }
+
+
+    
+
+    
 }

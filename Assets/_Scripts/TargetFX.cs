@@ -12,6 +12,9 @@ public class TargetFX : MonoBehaviour, IFX,IOnEventCallback
 
     public int FXEvent => fxEvent;
 
+
+    
+
     private void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);

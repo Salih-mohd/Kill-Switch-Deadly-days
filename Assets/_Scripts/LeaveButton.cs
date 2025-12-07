@@ -14,8 +14,20 @@ public class LeaveButton : MonoBehaviourPunCallbacks
 
     public void ReturnHome()
     {
-         
-        PhotonNetwork.Disconnect();       
+
+        PhotonNetwork.Disconnect();
+        
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+
+        //if(PhotonNetwork.InRoom)
+        //{
+        //    PhotonNetwork.LeaveRoom();
+        //} 
+        //else
+        //{
+        //    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+        //}
+
     }
 
 
@@ -26,9 +38,14 @@ public class LeaveButton : MonoBehaviourPunCallbacks
     }
 
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
+    //public override void OnDisconnected(DisconnectCause cause)
+    //{
          
+    //    UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+    //}
+
+    public override void OnLeftRoom()
+    {
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
     }
 

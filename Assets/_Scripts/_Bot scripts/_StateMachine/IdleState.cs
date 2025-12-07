@@ -7,17 +7,21 @@ public class IdleState : StateBase
 
     public override void Enter()
     {
-        
+
+        Debug.Log("entered idle state");
+        ai.Animator.SetTrigger("Idle");
+        //ai.Animator.SetBool("IdleBool",true );
+        ai.Agent.isStopped = true;  
     }
 
     public override void Check()
     {
         
-        ai.ChangeState(new FollowState(ai));
+        //ai.ChangeState(new FollowState(ai));
     }
 
     public override void Leave()
     {
-         
+        ai.Agent.isStopped = false;
     }
 }

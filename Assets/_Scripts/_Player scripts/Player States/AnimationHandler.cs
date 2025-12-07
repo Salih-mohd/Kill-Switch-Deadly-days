@@ -65,8 +65,4 @@ public class AnimationHandler : MonoBehaviourPun
         
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.B)) EnableRagdoll();
-    }
 }

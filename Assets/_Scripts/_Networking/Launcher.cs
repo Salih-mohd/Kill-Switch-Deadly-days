@@ -10,33 +10,73 @@ public class Launcher : MonoBehaviourPunCallbacks
     //private variables
     private string gameVersion = "1";
 
-    
+
 
 
     // MonoBehaviourPunCallback method session
 
     public override void OnConnectedToMaster()
     {
-         
-        //GameManager.instance.GettingLoadManager();
+        UIManagerMainMenu.Instance.connectedToMaster = true;
     }
 
     
+
+
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-         
-        UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+        UIManagerMainMenu.Instance.connectedToMaster = false;
+
+        Debug.Log(cause);
+
+
+        switch (cause)
+        {
+            case DisconnectCause.DnsExceptionOnConnect:
+                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+                UIManagerMainMenu.Instance.OnConnecctionLost();
+                break;
+
+            case DisconnectCause.ClientTimeout:
+                //UIManagerMainMenu.Instance.ShowMessage("Connection timed out. Please check your network.");
+                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+                UIManagerMainMenu.Instance.OnConnecctionLost();
+                break;
+
+            case DisconnectCause.ServerTimeout:
+                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+                UIManagerMainMenu.Instance.OnConnecctionLost();
+            //    UIManagerMainMenu.Instance.ShowMessage("Invalid AppId or authentication failed.");
+                break;
+            
+            case  DisconnectCause.DisconnectByClientLogic:
+                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+                UIManagerMainMenu.Instance.OnConnecctionLost();
+                break;
+
+            case DisconnectCause.DisconnectByServerLogic:
+                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+                UIManagerMainMenu.Instance.OnConnecctionLost();
+                break;
+
+               
+
+            default:
+                //UIManagerMainMenu.Instance.ShowMessage("Disconnected: " + cause);
+                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+                UIManagerMainMenu.Instance.OnConnecctionLost();
+                break;
+        }
+        //UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+        //UIManagerMainMenu.Instance.OnConnecctionLost();
     }
 
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-         
-    }
     
+
     public override void OnJoinedRoom()
     {
-         
+
         UIManagerMainMenu.Instance.ShowLobby(PhotonNetwork.IsMasterClient);
         UIManagerMainMenu.Instance.UpdatePlayerList();
     }
@@ -55,16 +95,21 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-         
+        UIManagerMainMenu.Instance.roomCreatePanel.SetActive(true);
     }
 
     public override void OnConnected()
     {
-         
+
         UIManagerMainMenu.Instance.ShowPlayOptionPanel();
     }
 
-    
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        UIManagerMainMenu.Instance.joinRoomPanel.SetActive(true);
+    }
+
 
 
     // ending MonoBehaviourPunCallback session
@@ -81,14 +126,14 @@ public class Launcher : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = gameVersion;
         }
-        
+
     }
 
-    public void CreateRoom()
-    {
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayers });
-        
-    }
+    //public void CreateRoom()
+    //{
+    //    PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayers });
+
+    //}
 
     public void JoinRoom()
     {
@@ -103,7 +148,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void ShowMultiPlayerPanel()
     {
-        if(PhotonNetwork.IsConnected)
+        if (PhotonNetwork.IsConnected)
         {
             UIManagerMainMenu.Instance.ShowMuiltiplayerPanel();
         }
@@ -112,5 +157,13 @@ public class Launcher : MonoBehaviourPunCallbacks
             UIManagerMainMenu.Instance.ShowConnectErrorPanel();
         }
     }
+
+
+
+
+    //  Room creation
+
+
+
 
 }

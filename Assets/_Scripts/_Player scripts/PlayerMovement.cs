@@ -92,6 +92,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         //attackHandler.AttackSpeed -= ChangingPlayerSpeed;
         attackHandler.AttackEvent -= ChangingPlayerSpeed;
         attackHandler.AttackDoneEvent -= ChangingPlayerSpeed;
+        
+        //freeLookCamTransform.Follow =null;
     }
 
     void Update()
@@ -109,21 +111,31 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         Vector2 input = inputHandler.MoveInput;
 
         // directon set up
-        Vector3 camForward = freeLookCamTransform.gameObject.transform.forward;
-        Vector3 camRight = freeLookCamTransform.gameObject.transform.right;
-        camForward.y = 0f;
-        camRight.y = 0f;
-        camForward.Normalize();
-        camRight.Normalize();
+
+        Vector3 cameraDirection= Vector3.zero;
+        Vector3 move=Vector3.zero;
+
+        if (freeLookCamTransform!=null)
+        {
+            Vector3 camForward = freeLookCamTransform.gameObject.transform.forward;
+            Vector3 camRight = freeLookCamTransform.gameObject.transform.right;
+            camForward.y = 0f;
+            camRight.y = 0f;
+            camForward.Normalize();
+            camRight.Normalize();
+
+            // when attacking
+            cameraDirection = new Vector3(camForward.x, 0f, camForward.z).normalized;
 
 
-        // when attacking
-        Vector3 cameraDirection = new Vector3(camForward.x, 0f, camForward.z).normalized;
+
+            move = camForward * input.y + camRight * input.x;
+            move = Vector3.ClampMagnitude(move, 1f);
+        }
+        
 
 
-
-        Vector3 move = camForward * input.y + camRight * input.x;
-        move = Vector3.ClampMagnitude(move, 1f);
+        
 
         //var camDir = camForward + camRight;
 

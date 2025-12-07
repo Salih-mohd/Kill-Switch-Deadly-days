@@ -13,6 +13,9 @@ TagManager:
   - GlobalUI
   - LoadingUI
   - LeaveButton
+  - PlayerUI
+  - BloodPool
+  - BasicHitPool
   layers:
   - Default
   - TransparentFX

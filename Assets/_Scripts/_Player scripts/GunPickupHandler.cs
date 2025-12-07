@@ -39,8 +39,8 @@ public class GunPickupHandler : MonoBehaviourPun
 
     private PhotonView pv;
 
-    private GameObject gunGameobject;
-    private PhotonView gunPV;
+    [HideInInspector] public GameObject gunGameobject;
+    [HideInInspector] public PhotonView gunPV;
 
 
 

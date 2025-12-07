@@ -19,6 +19,8 @@ public class GunRuntime : MonoBehaviourPun, IGun,IPunObservable
     public GunData gunData;
     //public BulletPool bulletPool;
     public Transform muzzleFlash;
+    public FXPool flashFX;
+
 
     public int reserveAmmo=60;
 
@@ -130,7 +132,7 @@ public class GunRuntime : MonoBehaviourPun, IGun,IPunObservable
         }
 
         Transform socket = playerPV.transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/WeaponPositions/"+equipSocketName);
-        Debug.Log("socket name is "+socket.name);
+        //Debug.Log("socket name is "+socket.name);
         transform.SetParent(socket);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
@@ -147,5 +149,13 @@ public class GunRuntime : MonoBehaviourPun, IGun,IPunObservable
         photonView.enabled = true;
         
        
+    }
+
+    [PunRPC]
+    private void RPC_MuzzleFX()
+    {
+        if(flashFX!=null && muzzleFlash!=null)
+            flashFX.PlayFX(muzzleFlash.position, muzzleFlash.rotation);
+
     }
 }

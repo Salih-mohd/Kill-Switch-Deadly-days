@@ -13,6 +13,11 @@ public class BotFXController : MonoBehaviour
     {
         botController = GetComponent<BotController>();
     }
+
+    private void Start()
+    {
+        VFXPrefab = GameObject.FindWithTag("BasicHitPool").GetComponent<FXPool>();
+    }
     private void OnEnable()
     {
         botController.AttackEvent += ShowVFX;

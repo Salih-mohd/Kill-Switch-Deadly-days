@@ -14,4 +14,9 @@ public class TargetHealth : MonoBehaviour, IDamage
         health-=damage;
         
     }
+
+    public void DamageForBot(float damage, PhotonView pv, PhotonView botPV)
+    {
+        throw new System.NotImplementedException();
+    }
 }

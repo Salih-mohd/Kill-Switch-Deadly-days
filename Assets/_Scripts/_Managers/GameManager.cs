@@ -16,9 +16,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     //public Slider healthBar;
 
     public PhotonView loadManagerPV;
+    public GameObject loadManagerPrefab;
+
 
     public Vector3[] spawnPostions;
-    public Button LeaveButton;
+    //public Button LeaveButton;
 
 
     private bool inTheScene;
@@ -51,10 +53,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         base.OnDisable();
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        if (LeaveButton!=null)
-        {
-            LeaveButton.onClick.RemoveAllListeners();
-        }
+        
         //startedToLoad-= ShowLoadingUI;
     }
 
@@ -86,6 +85,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
+
             PhotonNetwork.Instantiate("playerPrefabAllSet", spawnPos, Quaternion.identity);
             //timerText = GameObject.FindWithTag("TimerText").GetComponent<TMP_Text>();
             if (PhotonNetwork.IsMasterClient)
@@ -96,14 +96,19 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
             loadManagerPV.RPC("ShowLoadUI", RpcTarget.All, false);
-            StartCoroutine(DestroyLoadManger());
+            //StartCoroutine(DestroyLoadManger());
+            //loadManagerPV = LoadManager.instance.photonView;
 
         }
+        //else
+        //{
+        //    GettingLoadManager();
+        //}
     }
 
     public void ReSpawn(GameObject prefab)
     {
-        Debug.Log("inside reSpawn");
+        //Debug.Log("inside reSpawn");
         StartCoroutine(ReSpawn_Coroutine(prefab));
     }
 
@@ -124,20 +129,24 @@ public class GameManager : MonoBehaviourPunCallbacks
          
     }
 
-    public void GettingLoadManager()
-    {
-        var obj = PhotonNetwork.Instantiate(LoadMangerName, new Vector3(0, 0, 0), Quaternion.identity);
-        loadManagerPV=obj.GetComponent<PhotonView>();
+    //public void GettingLoadManager()
+    //{
+    //    if (PhotonNetwork.IsConnected)
+    //    {
+    //        Debug.Log("instantiated load manager");
+    //        //var obj = PhotonNetwork.Instantiate(LoadMangerName, new Vector3(0, 0, 0), Quaternion.identity);
+    //        var obj = Instantiate(loadManagerPrefab);
+    //        loadManagerPV = obj.GetComponent<PhotonView>();
+    //    }
+    //}
 
-    }
 
-
-    IEnumerator DestroyLoadManger()
-    {
-        yield return new WaitForSeconds(15);
-        if(loadManagerPV != null ) 
-        Destroy(loadManagerPV.gameObject);
-    }
+    //IEnumerator DestroyLoadManger()
+    //{
+    //    yield return new WaitForSeconds(15);
+    //    if (loadManagerPV != null)
+    //        Destroy(loadManagerPV.gameObject);
+    //}
 
 
 

@@ -45,12 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50632bb5d6329b49a2c794ab124a312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchDuration: 120
+  matchDuration: 180
   timerText: {fileID: 0}
   ScoreBoard: {fileID: 0}
   rowPrefab: {fileID: 8706677120744731401, guid: 174de11b083afc8468eb47db68b22ef3, type: 3}
   rowParent: {fileID: 0}
   gameOver: 0
+  errorPanel: {fileID: 0}
+  failPanel: {fileID: 0}
 --- !u!114 &8299081921929958327
 MonoBehaviour:
   m_ObjectHideFlags: 0

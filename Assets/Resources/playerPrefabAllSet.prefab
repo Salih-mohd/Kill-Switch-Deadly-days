@@ -391,6 +391,8 @@ MonoBehaviour:
   animationHandler: {fileID: 3135282817024645159}
   HasGunEquipped: 0
   speedWithoughtGun: 0
+  gunGameobject: {fileID: 0}
+  gunPV: {fileID: 0}
 --- !u!114 &7886520372971803415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,6 +1495,7 @@ GameObject:
   - component: {fileID: 8087015435899227180}
   - component: {fileID: 6652877356715016431}
   - component: {fileID: 4281979488440524869}
+  - component: {fileID: 8423374215774803737}
   m_Layer: 3
   m_Name: BodyHitBox
   m_TagString: Untagged
@@ -1528,6 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dam: 3
+  bloodFX: {fileID: 0}
 --- !u!65 &4281979488440524869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1549,6 +1553,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 57.726055, y: 34.460804, z: 32.834427}
   m_Center: {x: 18.903006, y: -0.5614042, z: -0.83847404}
+--- !u!114 &8423374215774803737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044800283817439392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ae2ad26be76464a9bf0ee2fe3774a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fxPool: {fileID: 0}
+  fxEvent: 4
 --- !u!1 &1189771852379709131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,6 +2235,7 @@ GameObject:
   - component: {fileID: 4037485935842680429}
   - component: {fileID: 1655574175119208549}
   - component: {fileID: 4033713563647437625}
+  - component: {fileID: 7641587130144630989}
   m_Layer: 3
   m_Name: HeadHitBox
   m_TagString: HeadHitBox
@@ -2252,6 +2271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dam: 5
+  bloodFX: {fileID: 0}
 --- !u!135 &4033713563647437625
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2273,6 +2293,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 21.909128
   m_Center: {x: 0.28, y: 7.7, z: -0.0000011325242}
+--- !u!114 &7641587130144630989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811605633918723845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ae2ad26be76464a9bf0ee2fe3774a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fxPool: {fileID: 0}
+  fxEvent: 4
 --- !u!1 &1914900383048412779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2740,7 @@ GameObject:
   - component: {fileID: 100574524998927390}
   - component: {fileID: 7137385542731033313}
   - component: {fileID: 4633177926229382629}
+  - component: {fileID: 7894142721144478790}
   m_Layer: 3
   m_Name: LowerHitBox
   m_TagString: Untagged
@@ -2741,6 +2776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dam: 2
+  bloodFX: {fileID: 0}
 --- !u!65 &4633177926229382629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2762,6 +2798,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 57.726063, y: 21.083603, z: 32.834427}
   m_Center: {x: 88.919914, y: -7.2500134, z: -0.83847386}
+--- !u!114 &7894142721144478790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041539007759183949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ae2ad26be76464a9bf0ee2fe3774a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fxPool: {fileID: 0}
+  fxEvent: 4
 --- !u!1 &3132170438705379619
 GameObject:
   m_ObjectHideFlags: 0
