@@ -16,6 +16,7 @@ TagManager:
   - PlayerUI
   - BloodPool
   - BasicHitPool
+  - TracerPool
   layers:
   - Default
   - TransparentFX

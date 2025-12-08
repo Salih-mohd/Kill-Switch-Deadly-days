@@ -61,6 +61,9 @@ public class GunRuntime : MonoBehaviourPun, IGun,IPunObservable
         get=> reserveAmmo;
         set => reserveAmmo = value;
     }
+
+    public Transform MuzzleFlash => muzzleFlash;
+
     //public int RecerveAmmo { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     //int IGun.CurrentAmmo { get; set; }

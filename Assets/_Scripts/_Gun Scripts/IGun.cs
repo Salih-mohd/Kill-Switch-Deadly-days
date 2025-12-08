@@ -7,6 +7,8 @@ public interface IGun
     Transform IKLeftHandIdlePos { get; }
     Transform IKLeftHandAimPos { get; }
 
+    Transform MuzzleFlash {  get; }
+
 
     float moveSpeed {  get; }
     float LeftHIdleW {  get; }

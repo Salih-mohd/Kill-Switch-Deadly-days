@@ -58,6 +58,11 @@ public class GunAttackHandler : MonoBehaviourPun
 
     public event Action<int, int> OnAmmoChanged;
 
+    [Header("Line renderer")]
+    public LineRenderer bulletTracer;
+    public Transform startPoint;
+    public TracerPool tracerPool;
+
     private void Awake()
     {
         // testing to delete it.
@@ -70,6 +75,11 @@ public class GunAttackHandler : MonoBehaviourPun
         audioSource = GetComponent<AudioSource>();
         
 
+    }
+
+    private void Start()
+    {
+        tracerPool = GameObject.FindWithTag("TracerPool").GetComponent<TracerPool>();
     }
 
     private void OnEnable()
@@ -202,6 +212,11 @@ public class GunAttackHandler : MonoBehaviourPun
         if (Physics.Raycast(ray, out hit, 999f, bulletMask))
         {
             debugTransform.position = hit.point;
+
+
+            // handling line renderor
+            StartCoroutine(ShowTracer(gun.MuzzleFlash.position, hit.point));
+
         }
 
 
@@ -404,6 +419,20 @@ public class GunAttackHandler : MonoBehaviourPun
     public void InvokingAmmoChangingEvent(int curr,int reserve)
     {
         OnAmmoChanged?.Invoke(curr, reserve);
+    }
+
+
+
+
+
+    // handling line renderor
+    IEnumerator ShowTracer(Vector3 start,Vector3 end)
+    {
+        var lr = Instantiate(bulletTracer);
+        lr.SetPosition(0, start);
+        lr.SetPosition(1,end);
+        yield return new WaitForSeconds(.05f);
+        Destroy(lr.gameObject);
     }
 
 }
