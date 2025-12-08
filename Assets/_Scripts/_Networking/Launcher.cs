@@ -18,6 +18,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         UIManagerMainMenu.Instance.connectedToMaster = true;
+        UIManagerMainMenu.Instance.PlayPanelAndHideMainPanel();
+        PhotonNetwork.JoinLobby();
     }
 
     
@@ -28,50 +30,50 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         UIManagerMainMenu.Instance.connectedToMaster = false;
 
-        Debug.Log(cause);
+         
 
 
         switch (cause)
         {
             case DisconnectCause.DnsExceptionOnConnect:
-                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
-                UIManagerMainMenu.Instance.OnConnecctionLost();
+                ShowErrorUI();
                 break;
 
             case DisconnectCause.ClientTimeout:
                 //UIManagerMainMenu.Instance.ShowMessage("Connection timed out. Please check your network.");
-                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
-                UIManagerMainMenu.Instance.OnConnecctionLost();
+                ShowErrorUI();
                 break;
 
             case DisconnectCause.ServerTimeout:
-                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
-                UIManagerMainMenu.Instance.OnConnecctionLost();
+                ShowErrorUI();
             //    UIManagerMainMenu.Instance.ShowMessage("Invalid AppId or authentication failed.");
                 break;
             
             case  DisconnectCause.DisconnectByClientLogic:
-                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
-                UIManagerMainMenu.Instance.OnConnecctionLost();
+                ShowErrorUI();
                 break;
 
             case DisconnectCause.DisconnectByServerLogic:
-                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
-                UIManagerMainMenu.Instance.OnConnecctionLost();
+                ShowErrorUI();
                 break;
 
                
 
             default:
                 //UIManagerMainMenu.Instance.ShowMessage("Disconnected: " + cause);
-                UIManagerMainMenu.Instance.ShowConnectErrorPanel();
-                UIManagerMainMenu.Instance.OnConnecctionLost();
+                ShowErrorUI();
                 break;
         }
         //UIManagerMainMenu.Instance.ShowConnectErrorPanel();
         //UIManagerMainMenu.Instance.OnConnecctionLost();
     }
 
+
+    private void ShowErrorUI()
+    {
+        UIManagerMainMenu.Instance.ShowConnectErrorPanel();
+        UIManagerMainMenu.Instance.OnConnecctionLost();
+    }
     
 
     public override void OnJoinedRoom()
@@ -144,6 +146,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
         UIManagerMainMenu.Instance.ShowMuiltiplayerPanel();
+        PhotonNetwork.JoinLobby();
     }
 
     public void ShowMultiPlayerPanel()
@@ -161,7 +164,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
 
 
-    //  Room creation
+     
 
 
 

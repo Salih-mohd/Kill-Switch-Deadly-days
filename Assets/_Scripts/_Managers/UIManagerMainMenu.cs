@@ -12,6 +12,7 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
     public static UIManagerMainMenu Instance;
     public bool inLobby;
     public bool connectedToMaster;
+    private bool creatingRoom;
 
     public GameObject multiPlayerPanel;
     public GameObject connectErrorPanel;
@@ -186,13 +187,13 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        if (!connectedToMaster)
+        if (!connectedToMaster || !inLobby)
         {
             roomCreatePanel.SetActive(true);
         }
         else
         {
-
+            if (creatingRoom) return;
             // Build room options
             RoomOptions options = new RoomOptions();
             options.MaxPlayers = (byte)maxPlayersCount;
@@ -213,10 +214,19 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
 
             // Create the room
             PhotonNetwork.CreateRoom(roomName, options);
+            creatingRoom = true;
             //Debug.Log($"Creating room: {roomName} with max {maxPlayersCount} players and password {passWord}");
         }
 
 
+    }
+
+    
+
+    public void PlayPanelAndHideMainPanel()
+    {
+        mainMenuUI.SetActive(false);
+        playOptionPanel.SetActive(true);
     }
 
 
@@ -233,7 +243,7 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
 
         if(connectedToMaster)
         {
-            PhotonNetwork.JoinLobby();
+            //PhotonNetwork.JoinLobby();
             joinRoomOptions.SetActive(true);
         }
         else
@@ -246,7 +256,7 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
     }
     public void QuiteLobby()
     {
-        if (inLobby)
+        if (inLobby && connectedToMaster)
         {
             PhotonNetwork.LeaveLobby();
         }
@@ -290,7 +300,7 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
             {
 
                 PhotonNetwork.JoinRoom(selectedRoomName);
-                inLobby = false;
+                //inLobby = false;
             }
             else
             {
@@ -337,6 +347,12 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
         connectedToMaster=false;
     }
 
+    public override void OnCreatedRoom()
+    {
+        creatingRoom=false;
+    }
+
+    
    
 
 }

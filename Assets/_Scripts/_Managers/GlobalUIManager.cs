@@ -270,6 +270,12 @@ public class GlobalUIManager : MonoBehaviourPunCallbacks
         text.text = $"{killerName} killed {victimName}";
     }
 
+
+
+
+
+
+
     //leaving room notification
     public void AddLeaveEntry(string playerName)
     {
@@ -277,6 +283,10 @@ public class GlobalUIManager : MonoBehaviourPunCallbacks
         var text= entry.GetComponentInChildren<TMP_Text>();
         text.text=$"{playerName} left room";
     }
+
+
+
+
 
 
     // hit marker notification
@@ -288,6 +298,10 @@ public class GlobalUIManager : MonoBehaviourPunCallbacks
         var txt= entry.GetComponentInChildren<TMP_Text>();
         txt.text = $"Took {damage} damage";
     }
+
+
+
+    // sort score
 
     private void SortScoreBoard()
     {

@@ -53,8 +53,7 @@ public class PlayerDamage : MonoBehaviourPun, IDamage
 
 
         // hit marker update
-        
-        
+               
         //GlobalUIManager.instance.HitMarkUpdate(dam);
         
         //playerHealth.Damage(damage);        
