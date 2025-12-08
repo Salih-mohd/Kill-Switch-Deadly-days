@@ -8,7 +8,7 @@ public class IdleState : StateBase
     public override void Enter()
     {
 
-        Debug.Log("entered idle state");
+         
         ai.Animator.SetTrigger("Idle");
         //ai.Animator.SetBool("IdleBool",true );
         ai.Agent.isStopped = true;  

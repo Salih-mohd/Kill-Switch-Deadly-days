@@ -445,6 +445,7 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: e839ff1f85b242f499afa08a23ad671b, type: 3}
   bulletTracer: {fileID: 3070155118524480675, guid: 97695b7f6f4662347a4db9eab8d075e7, type: 3}
   startPoint: {fileID: 5703701603422364976}
+  tracerPool: {fileID: 0}
 --- !u!114 &3203227445377195473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,6 +1570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fxPool: {fileID: 0}
   fxEvent: 4
+  tagOfPool: 
 --- !u!1 &1189771852379709131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fxPool: {fileID: 0}
   fxEvent: 4
+  tagOfPool: 
 --- !u!1 &1914900383048412779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,6 +2817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fxPool: {fileID: 0}
   fxEvent: 4
+  tagOfPool: 
 --- !u!1 &3132170438705379619
 GameObject:
   m_ObjectHideFlags: 0

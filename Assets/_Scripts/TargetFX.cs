@@ -13,7 +13,7 @@ public class TargetFX : MonoBehaviour, IFX,IOnEventCallback
     public int FXEvent => fxEvent;
 
 
-    
+    public string tagOfPool;
 
     private void OnEnable()
     {
@@ -23,6 +23,14 @@ public class TargetFX : MonoBehaviour, IFX,IOnEventCallback
     private void OnDisable()
     {
         PhotonNetwork.RemoveCallbackTarget(this);
+    }
+
+
+    private void Start()
+    {
+        if(tagOfPool!=string.Empty)
+            fxPool = GameObject.FindWithTag(tagOfPool).GetComponent<FXPool>();
+
     }
 
     public void OnEvent(EventData photonEvent)
@@ -41,6 +49,9 @@ public class TargetFX : MonoBehaviour, IFX,IOnEventCallback
 
     public void PlayFx(Vector3 position,Quaternion rotation)
     {
-        fxPool.PlayFX(position, rotation);
+        if (fxPool != null)
+            fxPool.PlayFX(position, rotation);
+        
+
     }
 }

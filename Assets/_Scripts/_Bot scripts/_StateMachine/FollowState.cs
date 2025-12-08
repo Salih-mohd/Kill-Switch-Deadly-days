@@ -7,7 +7,7 @@ public class FollowState : StateBase
 
     public override void Enter()
     {
-        Debug.Log("AI entered Run state");
+         
         //ai.Agent.isStopped = false;
         ai.Animator.SetTrigger("Follow");
     }

@@ -1,0 +1,12 @@
+# ninja log v5
+150	1656	7868934995908982	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	b1b87761205c3d8b
+1659	2509	7868935005206314	D:/Projects 21 to 30/Kill Switch - Deadly days/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2j73434n/obj/arm64-v8a/libswappywrapper.so	2da518fd08d8baeb
+98	3884	7868935018907898	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a64f7b2ffa69f778
+40	3989	7868935019793008	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	97cd48dfb5884638
+115	4022	7868935019884024	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3a514d81efb68300
+132	4197	7868935022031570	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	3cb80f066e546c36
+4	4289	7868935023097690	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	33c33a1c2c8a2077
+68	4387	7868935024011404	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	beb0568c1c78a283
+83	4550	7868935025666774	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	a0b045f97ef0899c
+53	4791	7868935028037156	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1ea364db168c7d92
+4791	5083	7868935031118604	D:/Projects 21 to 30/Kill Switch - Deadly days/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2j73434n/obj/arm64-v8a/libgame.so	cc08c2bf7c5cb82a

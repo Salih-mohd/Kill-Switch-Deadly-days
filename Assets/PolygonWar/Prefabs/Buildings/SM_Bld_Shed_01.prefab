@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &419866
 Transform:
@@ -99,12 +99,12 @@ GameObject:
   - component: {fileID: 2306798}
   - component: {fileID: 146980836827477282}
   - component: {fileID: 8554652594910349002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Bld_Shed_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &471728
 Transform:
@@ -210,3 +210,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fxPool: {fileID: 0}
   fxEvent: 3
+  tagOfPool: FirePool

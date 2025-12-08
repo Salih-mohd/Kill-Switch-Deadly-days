@@ -12,7 +12,7 @@ public class AttackState : StateBase
 
     public override void Enter()
     {
-        Debug.Log("entering to attacck state");
+         
          
         //ai.Agent.isStopped = true;
         ai.Animator.SetTrigger("Attack");
