@@ -52,6 +52,5 @@ public class TargetFX : MonoBehaviour, IFX,IOnEventCallback
         if (fxPool != null)
             fxPool.PlayFX(position, rotation);
         
-
     }
 }
