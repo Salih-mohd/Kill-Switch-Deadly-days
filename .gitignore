@@ -3,6 +3,7 @@
 
 # Ignore Visual Studio cache
 .vs/
+.vsconfig
 
 # ========== Unity Default Ignore Rules ==========
 
@@ -17,6 +18,11 @@ Thumbs.db
 [Bb]uilds/
 [Ll]ogs/
 [Oo]bj/
+[Uu]ser[Ss]ettings/
+
+# Temporary files
+*.utmp
+.utmp/
 
 # Asset meta data should be tracked, but not the cache
 sysinfo.txt
