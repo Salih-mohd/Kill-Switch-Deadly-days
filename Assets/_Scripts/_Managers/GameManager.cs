@@ -83,13 +83,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             int index = PhotonNetwork.LocalPlayer.ActorNumber % spawnPostions.Length;
             Vector3 spawnPos = spawnPostions[index];
 
-
-
-
             PhotonNetwork.Instantiate("playerPrefabAllSet", spawnPos, Quaternion.identity);
+
+
+            //PhotonNetwork.Instantiate("playerPrefabAllSet", spawnPos, Quaternion.identity);
             //timerText = GameObject.FindWithTag("TimerText").GetComponent<TMP_Text>();
             if (PhotonNetwork.IsMasterClient)
             {
+                
                 GlobalUIManager.instance.StartingTime();
             }
             inTheScene = true;

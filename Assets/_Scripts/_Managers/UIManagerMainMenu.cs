@@ -137,7 +137,7 @@ public class UIManagerMainMenu : MonoBehaviourPunCallbacks
         {
             if (i < playerNameSlots.Count)
             {
-                playerNameSlots[i].text = player.NickName.ToString(); // or player.ActorNumber
+                playerNameSlots[i].text = player.NickName.ToString(); 
                 i++;
             }
         }
